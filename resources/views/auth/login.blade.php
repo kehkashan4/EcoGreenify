@@ -12,21 +12,17 @@
         padding: 5px 15px;
     }
     .login-button:hover{
-        background-color: #28a745;
-        color: white;
+        background-color: #28a745 !important;
+        color: white !important;
       }
     .register-button{
         border-color: #39b54a;
         color: #39b54a;
     }
     .register-button:hover{
-        background-color: #28a745;
-        color: white;
-      }
-      .register-button:focus, .register-button:active {
         background-color: #28a745 !important;
         color: white !important;
-        }
+      }
 </style>
 <div class="container">
     <div class="row justify-content-center">

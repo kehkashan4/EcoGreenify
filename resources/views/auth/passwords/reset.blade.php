@@ -1,10 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .btn-color{
+        background-color: #39b54a;
+        color: white;
+    }
+    .btn-color:hover{
+        background-color: #28a745;
+        color: white;
+      }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
@@ -51,7 +61,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-color">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>

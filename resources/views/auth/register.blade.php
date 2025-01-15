@@ -11,8 +11,8 @@
         color: white;
     }
     .register-button:hover{
-        background-color: #28a745;
-        color: white;
+        background-color: #28a745 !important;
+        color: white !important;
       }
 </style>
 <div class="container">

@@ -51,25 +51,26 @@
             background-color: #28a745;
         }
     </style>
-    <div class="navbar navbar-expand-md">
+    <div class="navbar navbar-expand-md fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('website.home')}}">
-                <img width="25" class="me-1 mb-1" src="{{ asset('logo.png')}}" alt="">EcoGreenify
+            <a class="navbar-brand" href="#">
+                <img width="25" class="me-1 mb-1" src="{{ asset('images/logo.png')}}" alt="">EcoGreenify
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('website.home')}}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('website.map')}}">Interactive Map</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('website.footprint')}}">Carbon Footprint</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('website.issues')}}">Issues</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('website.mart')}}">Greenify Mart</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('website.challenges')}}">EcoChallenges</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('website.about')}}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('page')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('user.map')}}">Interactive Map</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('user.footprint')}}">Carbon Footprint</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('user.issues')}}">Issues</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('user.mart')}}">Greenify Mart</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('user.challenges')}}">EcoChallenges</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{{ route('user.about')}}">About Us</a></li>
                  </ul>
-                 <a href="{{ route('home')}}" class="btn ms-2 btn-custom" style="background-color: #39b54a; color: white">Sign Up</a>
+                 <a href="{{ route('admin')}}" class="btn ms-2 btn-custom" style="background-color: #39b54a; color: white">Sign Up</a>
+                 {{-- <a href="{{ route('login')}}" class="btn ms-2 btn-custom" style="background-color: #39b54a; color: white">Sign In</a> --}}
             </div>
          </div>
     </div>
@@ -90,8 +91,8 @@
 
                <div class="col-12 col-md-4 text-center">
                    <h4 class="text-light">Quick Links</h4>
-                   <p><a class="text-light" href="{{ route('website.home')}}">Home</a></p>
-                   <p><a class="text-light" href="{{ route('website.about')}}">About Us</a></p>
+                   <p><a class="text-light" href="{{ route('page')}}">Home</a></p>
+                   <p><a class="text-light" href="{{ route('user.about')}}">About Us</a></p>
                    <p><a class="text-light" href="#">Privacy Policy</a></p>
                    <p><a class="text-light" href="#">Terms of Service</a></p>
                </div>

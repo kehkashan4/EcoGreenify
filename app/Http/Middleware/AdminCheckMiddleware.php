@@ -22,7 +22,7 @@ class AdminCheckMiddleware
 
         $user=Auth::user();
         if($user->role !='admin'){
-            abort(401);
+            return redirect()->route('page');
         }
         return $next($request);
     }
