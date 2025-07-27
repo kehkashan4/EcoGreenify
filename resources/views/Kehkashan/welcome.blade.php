@@ -1,8 +1,21 @@
-@extends('master.main')
+@extends('user.main')
 
-@section('home')
-    <style>
+@section('content')
 
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script>
+         $.ajaxSetup({
+                headers: {
+                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+                    }
+            });
+    </script>
+</head>
+
+
+<style>
       .card-feature{
          transition: transform 0.3s ease;
       }
@@ -33,14 +46,15 @@
            color: white;
 
       }
-    </style>
+</style>
 
+<!-- Hero Section-->
     <div style="position: relative; overflow-x: hidden;">
-       <img src="{{ asset('images/homehero01.jpg') }}" alt="" class="img-fluid mt-5" style="width: 100%; height: 90vh; object-fit: cover;">
+       <img src="{{ asset('images/homehero01.jpg') }}" alt="" class="img-fluid" style="width: 100%; height: 90vh; object-fit: cover;">
        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;">
-            <h1 style="font-weight: bold; font-size: 50px; margin-top: 50px;">Building a Sustainable Future Together</h1>
+            <h1 style="font-weight: bold; font-size: 50px; margin-top: 35px;">Building a Sustainable Future Together</h1>
             <p style="font-weight: 600; font-size: 25px;">Small Changes, Big Impact. Join the Green Movement!</p>
-            <div class="hero-button mt-3 row">
+            <div class="hero-button mt-1 row">
                 <div class="col-12 col-md-auto mb-2 mb-sm-2">
                     <a href="{{ route('user.footprint')}}" class="btn">Calculate Your Carbon Footprint</a>
                 </div>
@@ -53,81 +67,103 @@
 
      <div class="container my-5">
         <div class="row justify-content-center">
-             <div class="col-md-8 text-center">
-               <h2 style="font-weight: bold;">Website Overview and Mission</h2>
-               <p>EcoGreenify is a platform dedicated to providing eco-friendly solutions and ideas to improve our country’s environment. Our  mission is to encourage sustainable habits and actions that will make our surroundings cleaner and healthier for everyone.</p>
-               <p>On our website, you’ll find eco-friendly products, tips, and practical ways to make your lifestyle more sustainable.</p>
+             <div class="col-md-10 text-center">
+               <h2 style="font-size: 40px; font-weight: bold; font-family: 'Times New Roman', serif;">Website Overview and Mission</h2>
+               <p style="font-size: 21px" class="mt-3">EcoGreenify is a platform dedicated to providing eco-friendly solutions and ideas to improve our country’s environment. Our  mission is to encourage sustainable habits and actions that will make our surroundings cleaner and healthier for everyone.</p>
+               <p style="font-size: 22px;">On our website, you’ll find eco-friendly products, tips, and practical ways to make your lifestyle more sustainable.</p>
              </div>
         </div>
      </div>
 
    <section class="py-3" style="background-color: #fff9e2">
       <div class="container text-center">
-         <h2 class="mb-5" style="font-weight: bold;">Our Key Features</h2>
+         <h2 class="mb-5" style="font-size: 40px; font-weight: bold; font-family: 'Times New Roman', serif;">Our Key Features</h2>
             <div class="row">
+
+                @foreach ($featurecards as $featurecard )
                 <div class="col-6 col-md-3 mb-3">
-                   <div class="card card-feature p-2">
-                      <div class="card-body text-center">
-                         <img width="100" src="{{asset('images/footprint.png')}}" alt="">
-                         <h4>Carbon Footprint</h4>
-                         <p>Track your impact and discover ways to reduce it.</p>
+                   <div class="card card-feature">
+                      <div class="card-body">
+                        <img src="{{ $featurecard->image }}" class="d-block mx-auto py-0" style="width: 180px" alt="">
+                        <h4>{{ $featurecard->title }}</h4>
+                        <p style="font-size: 20px;">{{ $featurecard->tag_line }}</p>
                       </div>
+
                     </div>
                 </div>
+                @endforeach
 
-                <div class="col-6 col-md-3 mb-3">
-                 <div class="card card-feature p-2">
-                    <div class="card-body text-center">
-                       <img width="85" src="{{asset('images/map.png')}}" alt="">
-                       <h4>Interactive Map</h4>
-                       <p>Find Local Eco-Friendly Projects Near You.</p>
-                    </div>
-                  </div>
-              </div>
-
-              <div class="col-6 col-md-3 mb-3">
-                 <div class="card card-feature p-2">
-                    <div class="card-body text-center">
-                       <img width="115" src="{{asset('images/mart.png')}}" alt="">
-                       <h4>Greenify Mart</h4>
-                       <p>Make a Difference with Every Eco-Friendly Purchase.</p>
-                    </div>
-                  </div>
-              </div>
-
-              <div class="col-6 col-md-3 mb-3">
-                 <div class="card card-feature p-2">
-                    <div class="card-body text-center">
-                       <img width="105" src="{{asset('images/challenges.png')}}" alt="">
-                       <h4>Eco-Challenges</h4>
-                       <p>Engage in fun challenges and earn rewards.</p>
-                    </div>
-                  </div>
-              </div>
-             </div>
+            </div>
         </div>
    </section>
 
-   <h2 class="text-center mt-4" style="font-weight: bold;">Why Care About Environment?</h2>
-   <div class="container py-3">
 
+
+   <h2 class="text-center mt-4" style="font-size: 40px; font-weight: bold; font-family: 'Times New Roman', serif;">Why Care About Environment?</h2>
+   <div class="container p-3 ">
         <div class="row">
              <div class="col-md-6 mt-3">
-                <p >Pakistan loses more than <b>200 million trees per year,</b> which causes flooding and raises CO2 levels in the atmosphere. This affects air quality, contributing to respiratory problems and other health concerns. We should thus realize the importance of immediate action on environmental issues.</p>
-                <p>Every year,<b> more than 120,000 people die prematurely </b>Pakistan as a result of air pollution, which is primarily caused by emissions from cars, factories, and crop burning. Air pollution also intensifies climate change by trapping heat in the atmosphere, contributing to global warming.</p>
-                <p>Climate change-related floods cause considerable losses in Pakistan, <b>costing $10 billion each year.</b> These floods destroy crops, ruin infrastructure, and displace millions of people, leaving the country more exposed.</p>
+                <p style="font-size: 19px;">Pakistan loses more than <b>200 million trees per year,</b> which causes flooding and raises CO2 levels in the atmosphere. This affects air quality, contributing to respiratory problems and other health concerns. We should thus realize the importance of immediate action on environmental issues.</p>
+                <p style="font-size: 19px;">Every year,<b> more than 120,000 people die prematurely </b>Pakistan as a result of air pollution, which is primarily caused by emissions from cars, factories, and crop burning. Air pollution also intensifies climate change by trapping heat in the atmosphere, contributing to global warming.</p>
+                <p style="font-size: 19px;">Climate change-related floods cause considerable losses in Pakistan, <b>costing $10 billion each year.</b> These floods destroy crops, ruin infrastructure, and displace millions of people, leaving the country more exposed.</p>
 
              </div>
-             <div class="col-md-6">
-                  <div class="container">
-                        <img width="500" class="img-fluid rounded" src="{{ asset('images/wood2.jpg')}}" alt="">
-                  </div>
+             <div class="col-md-6 mt-3">
+                    <img width="600" class="img-fluid rounded" src="{{ asset('images/wood2.jpg')}}" alt="">
              </div>
         </div>
    </div>
 
+
+   <section class="mt-2" style="background-color: #f8f8f8;">
+    <div class="container" style="padding: 50px;">
+        @include('components.places.place',['markers'=>$markers])
+    </div>
+   </section>
+
+
+
+<!-- AJAX Function for Like/Unlike -->
+<script>
+    function toggleLike(element) {
+     @if (Auth::check()) // Check agar user login hai
+         var markerId = $(element).data("place");
+         var heartIcon = $(element);
+
+         // Pehle UI update karo
+         var isLiked = heartIcon.css("color") === "rgb(211, 211, 211)"; // Light gray
+
+         if (isLiked) {
+             heartIcon.css("color", "red");
+         } else {
+             heartIcon.css("color", "#d3d3d3");
+         }
+
+         // Ab AJAX request bhejo
+         $.ajax({
+             url: "/toggle-favorite",
+             type: "POST",
+             data: {
+                 marker_id: markerId,
+                 _token: "{{ csrf_token() }}"
+             },
+             success: function (response) {
+                 if (response.status === "removed") {
+                     heartIcon.css("color", "#d3d3d3");
+                 } else {
+                     heartIcon.css("color", "red");
+                 }
+             }
+         });
+     @else
+         alert("Please login first!!");
+     @endif
+ }
+</script>
+
+<!-- Interactive Preview -->
    <div class="container mt-3">
-    <h2 class="text-center" style="font-weight: bold;">Interactive Preview</h2>
+    <h2 class="text-center" style="font-size: 40px; font-weight: bold; font-family: 'Times New Roman', serif;">Interactive Preview</h2>
         <div class="row py-3">
              <div class="col-12 col-md-6 mb-3">
                    <div class="card-preview p-4 text-center">

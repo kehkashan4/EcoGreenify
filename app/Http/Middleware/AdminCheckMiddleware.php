@@ -21,9 +21,13 @@ class AdminCheckMiddleware
         }
 
         $user=Auth::user();
-        if($user->role !='admin'){
-            return redirect()->route('page');
+        if ($user->role == 'admin' && !$request->is('admin*')) {
+            return redirect('/admin');
+        }
+        if($user->role =='user'){
+            return redirect('/page');
         }
         return $next($request);
+
     }
 }

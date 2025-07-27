@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('user.main')
 
 @section('content')
 <style>
@@ -15,7 +15,7 @@
         color: white !important;
       }
 </style>
-<div class="container">
+<div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">

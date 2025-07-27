@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('user.main')
 
 @section('content')
+
 <style>
     .btn-color{
         background-color: #39b54a;
@@ -11,10 +12,11 @@
         color: white;
       }
 </style>
-<div class="container">
+
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <div class="card mt-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
